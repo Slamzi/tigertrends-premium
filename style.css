@@ -1,0 +1,86 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: sans-serif;
+}
+
+body {
+  background: black;
+  color: white;
+  overflow-x: hidden;
+}
+
+/* 3D canvas */
+#bg {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: -1;
+}
+
+/* NAV */
+nav {
+  position: fixed;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  padding: 20px;
+  backdrop-filter: blur(10px);
+}
+
+/* HERO */
+.hero {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.glass {
+  background: rgba(255,255,255,0.05);
+  padding: 30px;
+  border-radius: 20px;
+  backdrop-filter: blur(20px);
+  text-align: center;
+}
+
+button {
+  margin-top: 15px;
+  padding: 10px 20px;
+  background: #ff7b00;
+  border: none;
+  color: white;
+  cursor: pointer;
+}
+
+/* SECTIONS */
+section {
+  padding: 100px 40px;
+}
+
+/* GRID */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px,1fr));
+  gap: 20px;
+}
+
+.card img {
+  width: 100%;
+  border-radius: 10px;
+}
+
+/* PLAYER */
+.player {
+  max-width: 400px;
+  margin: auto;
+}
+
+.controls {
+  margin-top: 15px;
+}
+
+input[type="range"] {
+  width: 100%;
+}
