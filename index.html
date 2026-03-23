@@ -1,224 +1,64 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>TigerTrends Premium</title>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>TigerTrends Final Boss</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css" />
 
-<style>
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: 'Poppins', sans-serif;
-}
-
-body {
-  background: radial-gradient(circle at top, #111, #000);
-  color: white;
-  overflow-x: hidden;
-}
-
-/* NAV */
-nav {
-  position: fixed;
-  width: 100%;
-  padding: 20px 40px;
-  display: flex;
-  justify-content: space-between;
-  background: rgba(0,0,0,0.6);
-  backdrop-filter: blur(15px);
-  z-index: 1000;
-}
-
-nav h1 {
-  color: #ff7b00;
-  font-weight: 700;
-}
-
-/* HERO */
-.hero {
-  height: 100vh;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  background: linear-gradient(270deg, #ff7b00, #000, #ff7b00);
-  background-size: 400% 400%;
-  animation: gradientMove 10s infinite;
-  text-align: center;
-}
-
-@keyframes gradientMove {
-  0% {background-position: 0%}
-  50% {background-position: 100%}
-  100% {background-position: 0%}
-}
-
-.hero h2 {
-  font-size: 3.5rem;
-}
-
-.hero span {
-  color: black;
-  background: #ff7b00;
-  padding: 5px 15px;
-}
-
-.hero button {
-  margin-top: 20px;
-  padding: 14px 40px;
-  border: none;
-  background: black;
-  color: #ff7b00;
-  font-weight: bold;
-  cursor: pointer;
-}
-
-/* MUSIC */
-.music {
-  padding: 120px 40px;
-}
-
-.music h2 {
-  margin-bottom: 30px;
-}
-
-/* GRID */
-.grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(320px,1fr));
-  gap: 30px;
-}
-
-/* CARD */
-.card {
-  background: rgba(255,255,255,0.05);
-  border-radius: 20px;
-  padding: 20px;
-  backdrop-filter: blur(20px);
-  transition: 0.4s;
-  position: relative;
-}
-
-.card:hover {
-  transform: scale(1.05);
-  box-shadow: 0 0 30px rgba(255,123,0,0.5);
-}
-
-/* PREMIUM BADGE */
-.premium {
-  position: absolute;
-  top: 10px;
-  right: 10px;
-  background: gold;
-  color: black;
-  padding: 5px 10px;
-  font-size: 0.8rem;
-  border-radius: 10px;
-}
-
-/* LOCK OVERLAY */
-.locked {
-  position: relative;
-}
-
-.locked::after {
-  content: "🔒 Premium Only";
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(0,0,0,0.8);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-size: 1.2rem;
-}
-
-/* FOOTER */
-footer {
-  text-align: center;
-  padding: 40px;
-  background: black;
-  color: gray;
-}
-</style>
+<!-- Three.js -->
+<script src="https://cdn.jsdelivr.net/npm/three@0.158.0/build/three.min.js"></script>
 </head>
 
 <body>
 
+<canvas id="bg"></canvas>
+
 <nav>
   <h1>TigerTrends</h1>
+  <div>0693995730</div>
 </nav>
 
 <section class="hero">
-  <h2>STREAM THE <span>FUTURE</span></h2>
-  <p>Exclusive TigerTrends Premium Music Experience</p>
-  <button onclick="scrollToMusic()">ENTER</button>
+  <div class="glass">
+    <h2>Enter the Final Experience</h2>
+    <p>A 3D-powered premium music universe</p>
+    <button onclick="scrollToMusic()">Explore</button>
+  </div>
 </section>
 
-<section class="music" id="music">
-  <h2>🔥 Slamzi / Sam Collection</h2>
+<section id="music">
+  <h2>🎧 Audio Experience</h2>
 
+  <div class="player glass">
+    <h3>Now Playing</h3>
+
+    <audio id="audio" src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3"></audio>
+
+    <div class="controls">
+      <button onclick="togglePlay()">Play / Pause</button>
+      <input type="range" id="seek" value="0">
+    </div>
+  </div>
+</section>
+
+<section id="gallery">
+  <h2>🌌 Visual World</h2>
   <div class="grid">
-
-    <!-- FREE TRACK -->
-    <div class="card">
-      <iframe 
-        src="https://audiomack.com/embed/song/slamzi/wouldve-been-different"
-        scrolling="no" width="100%" height="180" frameborder="0">
-      </iframe>
+    <div class="card glass">
+      <img src="https://images.unsplash.com/photo-1492684223066-81342ee5ff30">
     </div>
-
-    <!-- FREE TRACK -->
-    <div class="card">
-      <iframe 
-        src="https://audiomack.com/embed/song/slamzi/dangerous-remix"
-        scrolling="no" width="100%" height="180" frameborder="0">
-      </iframe>
+    <div class="card glass">
+      <img src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee">
     </div>
-
-    <!-- PREMIUM LOCKED -->
-    <div class="card locked">
-      <div class="premium">PREMIUM</div>
-      <iframe 
-        src="https://audiomack.com/embed/song/samzy/koleremi"
-        scrolling="no" width="100%" height="180" frameborder="0">
-      </iframe>
-    </div>
-
-    <!-- PREMIUM LOCKED -->
-    <div class="card locked">
-      <div class="premium">PREMIUM</div>
-      <iframe 
-        src="https://audiomack.com/embed/song/samzy/flexin-on-pluto"
-        scrolling="no" width="100%" height="180" frameborder="0">
-      </iframe>
-    </div>
-
   </div>
 </section>
 
 <footer>
-  © 2026 TigerTrends Premium. All rights reserved.
+  © 2026 TigerTrends Final Boss
 </footer>
 
-<script>
-function scrollToMusic() {
-  document.getElementById("music").scrollIntoView({ behavior: "smooth" });
-}
-
-// FAKE PREMIUM UNLOCK
-document.addEventListener("click", function(e) {
-  if (e.target.closest(".locked")) {
-    alert("🔥 Upgrade to TigerTrends Premium to unlock this track!");
-  }
-});
-</script>
-
+<script src="app.js"></script>
 </body>
 </html>
