@@ -1,6 +1,160 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TigerTrends 3D Experience</title>
+
+<style>
+body {
+  margin: 0;
+  overflow: hidden;
+  font-family: Arial, sans-serif;
+  color: white;
+}
+
+/* UI OVERLAY */
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  padding: 40px;
+  z-index: 10;
+  pointer-events: none;
+}
+
+.title {
+  font-size: 3rem;
+}
+
+.highlight {
+  color: #ff7b00;
+}
+
+.contact {
+  position: absolute;
+  bottom: 40px;
+  right: 40px;
+  font-size: 1.2rem;
+  color: #ff7b00;
+}
+
+/* BUTTON */
+.button {
+  margin-top: 20px;
+  padding: 12px 25px;
+  background: #ff7b00;
+  border: none;
+  color: white;
+  cursor: pointer;
+  pointer-events: auto;
+}
+</style>
+</head>
+
+<body>
+
+<div class="overlay">
+  <div class="title">
+    TigerTrends <span class="highlight">3D</span>
+  </div>
+  <p>Interactive digital experience beyond traditional websites</p>
+  <button class="button" onclick="focusObject()">Focus Object</button>
+</div>
+
+<div class="contact">0693995730</div>
+
+<!-- THREE.JS -->
+<script src="https://cdn.jsdelivr.net/npm/three@0.158.0/build/three.min.js"></script>
+
+<script>
+/* SCENE */
+const scene = new THREE.Scene();
+
+/* CAMERA */
+const camera = new THREE.PerspectiveCamera(
+  75,
+  window.innerWidth / window.innerHeight,
+  0.1,
+  1000
+);
+camera.position.z = 5;
+
+/* RENDERER */
+const renderer = new THREE.WebGLRenderer({ antialias: true });
+renderer.setSize(window.innerWidth, window.innerHeight);
+document.body.appendChild(renderer.domElement);
+
+/* LIGHTS */
+const light = new THREE.PointLight(0xffffff, 1);
+light.position.set(5,5,5);
+scene.add(light);
+
+const ambient = new THREE.AmbientLight(0x404040);
+scene.add(ambient);
+
+/* OBJECTS */
+const geometry = new THREE.TorusKnotGeometry(1, 0.3, 100, 16);
+const material = new THREE.MeshStandardMaterial({ color: 0xff7b00 });
+const object = new THREE.Mesh(geometry, material);
+
+scene.add(object);
+
+/* SECOND OBJECT */
+const geometry2 = new THREE.SphereGeometry(0.5, 32, 32);
+const material2 = new THREE.MeshStandardMaterial({ color: 0xffffff });
+const sphere = new THREE.Mesh(geometry2, material2);
+
+sphere.position.x = 2;
+scene.add(sphere);
+
+/* MOUSE INTERACTION */
+let mouseX = 0;
+let mouseY = 0;
+
+document.addEventListener("mousemove", (event) => {
+  mouseX = (event.clientX / window.innerWidth) * 2 - 1;
+  mouseY = -(event.clientY / window.innerHeight) * 2 + 1;
+});
+
+/* CLICK INTERACTION */
+function focusObject() {
+  camera.position.z = 3;
+}
+
+/* ANIMATION LOOP */
+function animate() {
+  requestAnimationFrame(animate);
+
+  object.rotation.x += 0.01;
+  object.rotation.y += 0.01;
+
+  sphere.rotation.y += 0.02;
+
+  /* CAMERA FOLLOWS MOUSE */
+  camera.position.x += (mouseX * 2 - camera.position.x) * 0.05;
+  camera.position.y += (mouseY * 2 - camera.position.y) * 0.05;
+
+  camera.lookAt(scene.position);
+
+  renderer.render(scene, camera);
+}
+
+animate();
+
+/* RESIZE */
+window.addEventListener("resize", () => {
+  renderer.setSize(window.innerWidth, window.innerHeight);
+  camera.aspect = window.innerWidth / window.innerHeight;
+  camera.updateProjectionMatrix();
+});
+</script>
+
+</body>
+</html><!DOCTYPE html>
+<html lang="en">
+<head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 <title>TigerTrends Final Boss</title>
