@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>TigerTrends Elite Production</title>
+<title>TigerTrends Security</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
 
@@ -16,213 +16,199 @@
 }
 
 body {
-  background: black;
+  background: #050505;
   color: white;
   overflow-x: hidden;
 }
 
-/* CANVAS */
-canvas {
+/* BACKGROUND GLOW */
+.bg-glow {
   position: fixed;
-  top: 0;
-  left: 0;
+  width: 600px;
+  height: 600px;
+  background: radial-gradient(circle, rgba(255,123,0,0.2), transparent);
+  top: -200px;
+  left: -200px;
+  filter: blur(100px);
   z-index: -1;
 }
 
 /* NAV */
 nav {
-  position: fixed;
-  width: 100%;
-  padding: 20px 40px;
   display: flex;
   justify-content: space-between;
-  backdrop-filter: blur(15px);
-  z-index: 1000;
+  padding: 20px 40px;
+  backdrop-filter: blur(10px);
 }
 
 nav h1 {
   color: #ff7b00;
 }
 
+/* HERO */
+.hero {
+  text-align: center;
+  padding: 120px 20px;
+}
+
+.hero h1 {
+  font-size: 3.5rem;
+}
+
+.hero span {
+  color: #ff7b00;
+}
+
+.hero p {
+  margin-top: 20px;
+  opacity: 0.7;
+}
+
+.hero button {
+  margin-top: 30px;
+  padding: 12px 25px;
+  background: #ff7b00;
+  border: none;
+  color: white;
+  cursor: pointer;
+}
+
 /* SECTIONS */
 section {
-  height: 100vh;
+  padding: 100px 40px;
+}
+
+/* GRID */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px,1fr));
+  gap: 25px;
+}
+
+/* CARD */
+.card {
+  background: rgba(255,255,255,0.05);
+  padding: 20px;
+  border-radius: 15px;
+  backdrop-filter: blur(20px);
+  transition: 0.3s;
+}
+
+.card:hover {
+  transform: translateY(-10px);
+}
+
+/* IMAGES */
+.card img {
+  width: 100%;
+  border-radius: 10px;
+  margin-bottom: 15px;
+}
+
+/* DASHBOARD */
+.dashboard {
   display: flex;
+  gap: 40px;
   align-items: center;
-  padding: 100px;
 }
 
-.content {
-  max-width: 500px;
+.dashboard img {
+  width: 50%;
+  border-radius: 15px;
 }
 
-h1 {
-  font-size: 3rem;
+/* CTA */
+.cta {
+  text-align: center;
+  background: linear-gradient(45deg, #ff7b00, #ff3c00);
+  padding: 80px 20px;
+  border-radius: 20px;
 }
 
-.highlight {
-  color: #ff7b00;
-}
-
-p {
+.cta button {
   margin-top: 20px;
-  opacity: 0.8;
+  padding: 12px 30px;
+  border: none;
+  background: black;
+  color: white;
+  cursor: pointer;
 }
 
-/* CONTACT */
-.contact {
-  position: fixed;
-  bottom: 30px;
-  right: 30px;
-  color: #ff7b00;
+/* FOOTER */
+footer {
+  text-align: center;
+  padding: 40px;
+  opacity: 0.6;
 }
 </style>
 </head>
 
 <body>
 
-<canvas id="bg"></canvas>
+<div class="bg-glow"></div>
 
 <nav>
   <h1>TigerTrends</h1>
   <div>0693995730</div>
 </nav>
 
-<section id="s1">
-  <div class="content">
-    <h1>Welcome to <span class="highlight">TigerTrends</span></h1>
-    <p>Scroll to experience a cinematic 3D journey.</p>
+<!-- HERO -->
+<section class="hero">
+  <h1>Next-Gen <span>Cyber Security</span> Platform</h1>
+  <p>Protect your systems with AI-powered monitoring and real-time defense.</p>
+  <button>Get Started</button>
+</section>
+
+<!-- FEATURES -->
+<section>
+  <h2>Security Features</h2>
+  <div class="grid">
+
+    <div class="card">
+      <img src="https://images.unsplash.com/photo-1550751827-4bd374c3f58b">
+      <h3>Threat Detection</h3>
+      <p>Real-time monitoring of suspicious activity.</p>
+    </div>
+
+    <div class="card">
+      <img src="https://images.unsplash.com/photo-1563986768609-322da13575f3">
+      <h3>Firewall Protection</h3>
+      <p>Advanced firewall systems blocking attacks.</p>
+    </div>
+
+    <div class="card">
+      <img src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31">
+      <h3>Encryption</h3>
+      <p>End-to-end secure encrypted data systems.</p>
+    </div>
+
   </div>
 </section>
 
-<section id="s2">
-  <div class="content">
-    <h1>Immersive Design</h1>
-    <p>Camera transitions are controlled by scroll timelines.</p>
+<!-- DASHBOARD SECTION -->
+<section>
+  <h2>Live Security Dashboard</h2>
+  <div class="dashboard">
+    <img src="https://images.unsplash.com/photo-1555949963-aa79dcee981c">
+    <div>
+      <h3>Monitor Everything</h3>
+      <p>Track system activity, detect anomalies, and respond instantly with intelligent insights.</p>
+    </div>
   </div>
 </section>
 
-<section id="s3">
-  <div class="content">
-    <h1>Production Ready</h1>
-    <p>This structure scales like real-world studio websites.</p>
+<!-- CTA -->
+<section>
+  <div class="cta">
+    <h2>Secure Your Platform Today</h2>
+    <p>Join the next generation of cybersecurity solutions.</p>
+    <button>Start Free Trial</button>
   </div>
 </section>
 
-<div class="contact">0693995730</div>
-
-<!-- THREE + GSAP -->
-<script src="https://cdn.jsdelivr.net/npm/three@0.158.0/build/three.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
-
-<script>
-/* =========================
-   THREE.JS SETUP
-========================= */
-const scene = new THREE.Scene();
-
-const camera = new THREE.PerspectiveCamera(
-  75,
-  window.innerWidth/window.innerHeight,
-  0.1,
-  1000
-);
-
-camera.position.z = 5;
-
-const renderer = new THREE.WebGLRenderer({
-  canvas: document.querySelector("#bg"),
-  antialias: true
-});
-
-renderer.setSize(window.innerWidth, window.innerHeight);
-
-/* LIGHTS */
-const light = new THREE.PointLight(0xffffff, 1);
-light.position.set(5,5,5);
-scene.add(light);
-
-const ambient = new THREE.AmbientLight(0x404040);
-scene.add(ambient);
-
-/* OBJECTS */
-const geometry = new THREE.TorusKnotGeometry(1, 0.3, 150, 20);
-const material = new THREE.MeshStandardMaterial({ color: 0xff7b00 });
-const object = new THREE.Mesh(geometry, material);
-
-scene.add(object);
-
-/* SECOND OBJECT */
-const sphere = new THREE.Mesh(
-  new THREE.SphereGeometry(0.6, 32, 32),
-  new THREE.MeshStandardMaterial({ color: 0xffffff })
-);
-
-sphere.position.x = 2;
-scene.add(sphere);
-
-/* =========================
-   GSAP + SCROLL
-========================= */
-gsap.registerPlugin(ScrollTrigger);
-
-/* CAMERA TIMELINE */
-gsap.timeline({
-  scrollTrigger: {
-    trigger: "body",
-    start: "top top",
-    end: "bottom bottom",
-    scrub: true
-  }
-})
-.to(camera.position, { z: 6 }, 0)
-.to(camera.position, { y: -2 }, 0.3)
-.to(camera.position, { z: 4 }, 0.6)
-.to(camera.position, { y: -4 }, 0.8);
-
-/* OBJECT ANIMATIONS */
-gsap.timeline({
-  scrollTrigger: {
-    trigger: "#s2",
-    start: "top center",
-    scrub: true
-  }
-})
-.to(object.rotation, { x: 2, y: 2 });
-
-gsap.timeline({
-  scrollTrigger: {
-    trigger: "#s3",
-    start: "top center",
-    scrub: true
-  }
-})
-.to(sphere.position, { x: -2 });
-
-/* =========================
-   RENDER LOOP
-========================= */
-function animate(){
-  requestAnimationFrame(animate);
-
-  object.rotation.x += 0.005;
-  object.rotation.y += 0.005;
-
-  sphere.rotation.y += 0.01;
-
-  renderer.render(scene, camera);
-}
-
-animate();
-
-/* RESIZE */
-window.addEventListener("resize", ()=>{
-  renderer.setSize(window.innerWidth, window.innerHeight);
-  camera.aspect = window.innerWidth/window.innerHeight;
-  camera.updateProjectionMatrix();
-});
-</script>
+<footer>
+  © 2026 TigerTrends Security — 0693995730
+</footer>
 
 </body>
 </html>
